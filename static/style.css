@@ -1,0 +1,19 @@
+body {
+    background-color: #f4f4f4;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+h1 {
+    color: #007bff;
+}
+
+.result ul {
+    padding: 0;
+}
+
+.result li {
+    font-size: 18px;
+}
