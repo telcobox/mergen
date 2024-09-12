@@ -1,4 +1,1 @@
-flask
-ipaddress
-subprocess
-platform
+Flask=3.0.0
