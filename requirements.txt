@@ -1,5 +1,4 @@
 flask
-dns.resolver
 ipaddress
 subprocess
 platform
