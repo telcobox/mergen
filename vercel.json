@@ -8,24 +8,8 @@
   ],
   "routes": [
     {
-      "src": "/dns-lookup/(.*)",
-      "dest": "/dns-lookup/$1"
-    },
-    {
-      "src": "/ipsubnet-calculator/(.*)",
-      "dest": "/ipsubnet-calculator/$1"
-    },
-    {
-      "src": "/ping-latency-checker/(.*)",
-      "dest": "/ping-latency-checker/$1"
-    },
-    {
-      "src": "/whats-my-ip/(.*)",
-      "dest": "/whats-my-ip/$1"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/run.py"
     }
   ]
 }
