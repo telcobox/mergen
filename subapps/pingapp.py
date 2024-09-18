@@ -1,18 +1,16 @@
-from ping3 import ping
+import requests
 from flask import Blueprint, render_template, request
 
 # Create a Blueprint object for the Ping & Latency Checker sub-app
 ping_latency_app = Blueprint('ping_latency_app', __name__, template_folder='templates')
 
-# Function to ping a host
+# Function to ping a host via HTTP
 def ping_host(host):
     try:
-        # Perform ping using ping3 library
-        response_time = ping(host, timeout=2)  # Timeout is set to 2 seconds
-        if response_time is None:
-            return f"Ping failed: No response from {host}"
-        return f"Response time: {response_time * 1000:.2f} ms"  # Convert seconds to milliseconds
-    except Exception as e:
+        # Send a simple HTTP GET request to the host
+        response = requests.get(f'http://{host}', timeout=2)
+        return f"HTTP Response Code: {response.status_code}, Response Time: {response.elapsed.total_seconds() * 1000:.2f} ms"
+    except requests.RequestException as e:
         return f"Ping failed: {str(e)}"
 
 # Define the route for the Ping & Latency Checker
