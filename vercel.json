@@ -29,19 +29,19 @@
     },
     {
       "src": "/dns-lookup/(.*)",
-      "dest": "/mergen/dns-lookup/app.py"
+      "dest": "dns-lookup/app.py"
     },
     {
       "src": "/ipsubnet-calculator/(.*)",
-      "dest": "/mergen/ipsubnet-calculator/app.py"
+      "dest": "ipsubnet-calculator/app.py"
     },
     {
       "src": "/ping-latency-checker/(.*)",
-      "dest": "/mergen/ping-latency-checker/app.py"
+      "dest": "ping-latency-checker/app.py"
     },
     {
       "src": "/whats-my-ip/(.*)",
-      "dest": "/mergen/whats-my-ip/app.py"
+      "dest": "whats-my-ip/app.py"
     }
   ]
 }
