@@ -1,31 +1,9 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "run.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "run.py"
-    },
-    {
-      "src": "/dns-lookup/(.*)",
-      "dest": "dns-lookup/app.py"
-    },
-    {
-      "src": "/ipsubnet-calculator/(.*)",
-      "dest": "ipsubnet-calculator/app.py"
-    },
-    {
-      "src": "/ping-latency-checker/(.*)",
-      "dest": "ping-latency-checker/app.py"
-    },
-    {
-      "src": "/whats-my-ip/(.*)",
-      "dest": "whats-my-ip/app.py"
-    }
+  "rewrites": [
+    { "source": "/dns-lookup/(.*)", "destination": "/dns-lookup/$1" },
+    { "source": "/ipsubnet-calculator/(.*)", "destination": "/ipsubnet-calculator/$1" },
+    { "source": "/ping-latency-checker/(.*)", "destination": "/ping-latency-checker/$1" },
+    { "source": "/whats-my-ip/(.*)", "destination": "/whats-my-ip/$1" },
+    { "source": "/(.*)", "destination": "/$1" }
   ]
 }
