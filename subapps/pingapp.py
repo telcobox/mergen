@@ -1,12 +1,14 @@
 import subprocess
 import platform
-from flask import Flask, render_template, request
+from flask import Blueprint, render_template, request
 
-app = Flask(__name__)
+# Create a Blueprint object for the Ping & Latency Checker sub-app
+ping_latency_app = Blueprint('ping_latency_app', __name__, template_folder='templates')
 
+# Function to ping a host
 def ping_host(host):
     try:
-        # Detecting the OS 
+        # Detecting the OS
         if platform.system().lower() == 'windows':
             # Use '-n' for Windows
             ping_command = ['ping', '-n', '4', host]
@@ -19,13 +21,11 @@ def ping_host(host):
     except subprocess.CalledProcessError as e:
         return f"Ping failed: {e.output}"
 
-@app.route('/', methods=['GET', 'POST'])
+# Define the route for the Ping & Latency Checker
+@ping_latency_app.route('/', methods=['GET', 'POST'])
 def index():
     result = None
     if request.method == 'POST':
         host = request.form.get('host')
         result = ping_host(host)
     return render_template('ping_latency.html', result=result)
-
-if __name__ == '__main__':
-    app.run(port=5004, debug=True)

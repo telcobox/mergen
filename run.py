@@ -1,26 +1,21 @@
 from flask import Flask, render_template
+from subapps.dnsapp import dns_lookup_app
+from subapps.ipcalapp import ip_subnet_app
+from subapps.myipapp import whats_my_ip_app
+from subapps.pingapp import ping_latency_app
 
 app = Flask(__name__)
 
+# Register the dns_lookup_app Blueprint with URL prefixes. 
+app.register_blueprint(dns_lookup_app, url_prefix='/dns-lookup')
+app.register_blueprint(ip_subnet_app, url_prefix='/ipsubnet-calculator')
+app.register_blueprint(whats_my_ip_app, url_prefix='/whats-my-ip')
+app.register_blueprint(ping_latency_app, url_prefix='/ping-latency-checker')
+
+# Define routes for the main app
 @app.route('/')
 def home():
     return render_template('index.html')
-
-@app.route('/dns-lookup')
-def dnslookup():
-    return render_template('dns_lookup.html')
-
-@app.route('/ipsubnet-calculator')
-def ipsubnetcalculator():
-    return render_template('ip_calculator.html')
-
-@app.route('/ping-latency-checker')
-def pinglatencychecker():
-    return render_template('ping_latency.html')
-
-@app.route('/whats-my-ip')
-def whatsmyip():
-    return render_template('whats_my_ip.html')
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)

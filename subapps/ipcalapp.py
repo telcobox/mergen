@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Blueprint, render_template, request
 import ipaddress
 
-app = Flask(__name__)
+# Create a Blueprint object for the subnet calculator sub-app
+ip_subnet_app = Blueprint('ip_subnet_app', __name__, template_folder='templates')
 
 # Calculating IPv4 subnet details
 def calculate_ipv4_subnet(ip, cidr):
@@ -49,7 +50,8 @@ def calculate_ipv6_subnet(ip, cidr):
         "num_hosts": network.num_addresses - 2  # -2 for first and last in the range
     }
 
-@app.route('/', methods=['GET', 'POST'])
+# Define the route for the subnet calculator
+@ip_subnet_app.route('/', methods=['GET', 'POST'])
 def index():
     result_ipv4 = None
     result_ipv6 = None
@@ -65,6 +67,3 @@ def index():
             result_ipv6 = calculate_ipv6_subnet(ip, cidr)
 
     return render_template('ip_calculator.html', result_ipv4=result_ipv4, result_ipv6=result_ipv6)
-
-if __name__ == '__main__':
-    app.run(port=5001, debug=True)
