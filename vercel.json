@@ -27,8 +27,5 @@
       "src": "/whats-my-ip/(.*)",
       "dest": "whats-my-ip/app.py"
     }
-  ],
-  "rewrites": [
-      {"source": "/(.*)", "destination": "/"}
   ]
 }
