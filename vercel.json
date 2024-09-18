@@ -1,30 +1,14 @@
 {
   "version": 2,
-    "builds": [
-      {
-        "src": "run.py",
-        "use": "@vercel/python"
-      },
-      {
-        "src": "subapps/dnsapp.py",
-        "use": "@vercel/python"
-      },
-      {
-        "src": "subapps/ipcalapp.py",
-        "use": "@vercel/python"
-      },
-      {
-        "src": "subapps/myipapp.py",
-        "use": "@vercel/python"
-      },
-      {
-        "src": "subapps/pingapp.py",
-        "use": "@vercel/python"
-      }
-    ],
+  "builds": [
+    {
+      "src": "run.py",
+      "use": "@vercel/python"
+    }
+  ],
   "routes": [
     {
-      "src": "/",
+      "src": "/(.*)",
       "dest": "/run.py"
     }
   ]
