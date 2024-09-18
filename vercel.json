@@ -1,9 +1,31 @@
 {
-  "rewrites": [
-    { "source": "/dns-lookup/(.*)", "destination": "/dns-lookup/$1" },
-    { "source": "/ipsubnet-calculator/(.*)", "destination": "/ipsubnet-calculator/$1" },
-    { "source": "/ping-latency-checker/(.*)", "destination": "/ping-latency-checker/$1" },
-    { "source": "/whats-my-ip/(.*)", "destination": "/whats-my-ip/$1" },
-    { "source": "/(.*)", "destination": "/$1" }
+  "version": 2,
+  "builds": [
+    {
+      "src": "run.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/dns-lookup/(.*)",
+      "dest": "/dns-lookup/$1"
+    },
+    {
+      "src": "/ipsubnet-calculator/(.*)",
+      "dest": "/ipsubnet-calculator/$1"
+    },
+    {
+      "src": "/ping-latency-checker/(.*)",
+      "dest": "/ping-latency-checker/$1"
+    },
+    {
+      "src": "/whats-my-ip/(.*)",
+      "dest": "/whats-my-ip/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
   ]
 }
