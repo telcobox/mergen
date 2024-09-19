@@ -6,15 +6,22 @@
     <title>IP Address Calculator</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" sizes="32px" type="image/x-icon" href="static/mergenlogo.png">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" sizes="32px" type="image/x-icon" href="../static/mergenlogo.png">
+    <!-- Font embed code from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <h4 style="text-align: center"><a href="/"><b>Mergen - Telco Toolbox</b></a></h4>
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <h1 class="card-title">IP Address Calculator</h1>
+                        <h1 class="text-center card-title">IP Address Calculator</h1>
                         <p class="lead">Calculate IPv4 and IPv6 subnets.</p>
                         
                         <!-- IPv4 Subnet Calculator -->
@@ -28,7 +35,7 @@
                                 <label for="ipv4_cidr" class="form-label">CIDR (e.g., 24):</label>
                                 <input type="number" id="ipv4_cidr" name="ipv4_cidr" class="form-control" required min="0" max="32">
                             </div>
-                            <div class="d-grid">
+                            <div>
                                 <button type="submit" class="btn btn-primary" name="ipv4_submit">Calculate</button>
                             </div>
                         </form>
@@ -61,7 +68,7 @@
                                 <label for="ipv6_cidr" class="form-label">CIDR (e.g., 64):</label>
                                 <input type="number" id="ipv6_cidr" name="ipv6_cidr" class="form-control" required min="0" max="128">
                             </div>
-                            <div class="d-grid">
+                            <div>
                                 <button type="submit" class="btn btn-primary" name="ipv6_submit">Calculate</button>
                             </div>
                         </form>
@@ -104,7 +111,7 @@
                 <address>Built with Python and Bootstrap.</address>
             </div>
             <div>
-                <address>Copyright &copy; 2024, <a href="https://telcobox.net">Telcobox</a>. All rights reserved.</address>
+                <address>All rights reserved. &copy; 2024, <a href="https://telcobox.net">Telcobox</a>.</address>
             </div>
         </div>
     </footer>

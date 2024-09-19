@@ -1,13 +1,10 @@
 body {
     background-color: #f4f4f4;
+    font-family: 'Noto Sans';
 }
 
 .card {
     border-radius: 10px;
-}
-
-h1 {
-    color: #007bff;
 }
 
 .result ul {

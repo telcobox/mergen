@@ -5,27 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ping & Latency Checker</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" sizes="32px" type="image/x-icon" href="static/mergenlogo.png">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" sizes="32px" type="image/x-icon" href="../static/mergenlogo.png">
+    <!-- Font embed code from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <h4 style="text-align: center"><a href="/"><b>Mergen - Telco Toolbox</b></a></h4>
     <div class="container mt-5">
-        <h1 class="text-center">Ping & Latency Checker</h1>
-        <form method="POST" class="mt-4">
-            <div class="form-group">
-                <label for="host">Domain or IP Address</label>
-                <input type="text" class="form-control" id="host" name="host" placeholder="Enter domain or IP" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Check Ping</button>
-        </form>
+        <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h1 class="text-center card-title">Ping & Latency Checker</h1>
+                    <form method="POST" class="mt-4">
+                        <div class="form-group">
+                            <label for="host">Domain or IP Address</label>
+                            <input type="text" class="form-control" id="host" name="host" placeholder="Enter domain or IP" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Check Ping</button>
+                    </form>
 
-        {% if result %}
-        <div class="mt-4">
-            <h3>Ping Results:</h3>
-            <pre>{{ result }}</pre>
-        </div>
-        {% endif %}
-        <div class="mt-3">
-            <a href="/" class="btn btn-secondary">Back</a>
+                    {% if result %}
+                    <div class="mt-4">
+                        <h3>Ping Results:</h3>
+                        <pre>{{ result }}</pre>
+                    </div>
+                    {% endif %}
+                    <div class="mt-3">
+                        <a href="/" class="btn btn-secondary">Back</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -44,7 +57,7 @@
                 <address>Built with Python and Bootstrap.</address>
             </div>
             <div>
-                <address>Copyright &copy; 2024, <a href="https://telcobox.net">Telcobox</a>. All rights reserved.</address>
+                <address>All rights reserved. &copy; 2024, <a href="https://telcobox.net">Telcobox</a>.</address>
             </div>
         </div>
     </footer>
