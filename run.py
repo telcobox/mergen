@@ -4,6 +4,7 @@ from subapps.ipcalapp import ip_subnet_app
 from subapps.myipapp import whats_my_ip_app
 from subapps.pingapp import ping_latency_app
 from subapps.speedapp import speedtest_app
+from subapps.raidapp import raid_app
 
 app = Flask(__name__)
 
@@ -13,6 +14,7 @@ app.register_blueprint(ip_subnet_app, url_prefix='/ipsubnet-calculator')
 app.register_blueprint(whats_my_ip_app, url_prefix='/whats-my-ip')
 app.register_blueprint(ping_latency_app, url_prefix='/ping-latency-checker')
 app.register_blueprint(speedtest_app, url_prefix='/speedtest')
+app.register_blueprint(raid_app, url_prefix='/raid-calculator')
 
 # Define routes for the main app
 @app.route('/')
