@@ -3,6 +3,10 @@ body {
     font-family: 'Noto Sans';
 }
 
+footer {
+    background-color: #f4f4f4;
+}
+
 .card {
     border-radius: 10px;
 }
