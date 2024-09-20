@@ -9,5 +9,6 @@ What's included:
 2. What's my IP Address 
 3. DNS Lookup Tool 
 4. Ping & Latency Checker
+5. Bandwidth Speed Test
 
 Built with Python, Flask and Bootstrap - <em>with the help of Amazon Q and ChatGPT.</em>
