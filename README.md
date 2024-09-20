@@ -10,5 +10,6 @@ What's included:
 3. DNS Lookup Tool 
 4. Ping & Latency Checker
 5. Bandwidth Speed Test
+6. RAID Calculator
 
 Built with Python, Flask and Bootstrap - <em>with the help of Amazon Q and ChatGPT.</em>
