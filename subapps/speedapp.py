@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, jsonify
 import speedtest
 import statistics
 import time
+import logging
 
 # Define the blueprint
 speedtest_app = Blueprint('speedtest_app', __name__, template_folder='templates')
@@ -10,34 +11,53 @@ speedtest_app = Blueprint('speedtest_app', __name__, template_folder='templates'
 def measure_jitter(st, server, num_pings=3):
     pings = []
     for _ in range(num_pings):
-        st.get_best_server([server])  # Ensure we're testing the same server
+        st.get_best_server([server])
         ping = st.results.ping
         pings.append(ping)
         time.sleep(0.5)  # Small delay between pings to avoid overwhelming the server
     jitter = statistics.stdev(pings) if len(pings) > 1 else None  # Calculate jitter
     return jitter
 
+logging.basicConfig(level=logging.DEBUG)
+
 # Run speed test with performance optimizations
 def run_speed_test():
     st = speedtest.Speedtest()
-    st.get_best_server()  # Get the best server
+    
+    try:
+        logging.debug("Fetching best server...")
+        st.get_best_server() 
+        logging.debug("Best server found.")
 
-    # Run the speed test using multithreading for faster results
-    download = st.download(threads=4) / 1e6  # Convert to Mbps
-    upload = st.upload(threads=4) / 1e6  # Convert to Mbps
-    ping = st.results.ping
+        # Run the speed test using multithreading for faster results
+        logging.debug("Running download speed test...")
+        download = st.download(threads=4) / 1e6  # Convert to Mbps
+        logging.debug(f"Download speed: {download} Mbps")
 
-    # Measure jitter
-    jitter = measure_jitter(st, st.results.server)
+        logging.debug("Running upload speed test...")
+        upload = st.upload(threads=4) / 1e6  # Convert to Mbps
+        logging.debug(f"Upload speed: {upload} Mbps")
 
-    # Collect server info for transparency
-    server_info = {
-        'name': st.results.server['sponsor'],
-        'location': f"{st.results.server['name']}, {st.results.server['country']}",
-        'ping': ping,
-        'jitter': jitter
-    }
-    return download, upload, ping, jitter, server_info
+        ping = st.results.ping
+
+        # Measure jitter
+        jitter = measure_jitter(st, st.results.server)
+
+        # Collect server info for transparency
+        server_info = {
+            'name': st.results.server['sponsor'],
+            'location': f"{st.results.server['name']}, {st.results.server['country']}",
+            'ping': ping,
+            'jitter': jitter
+        }
+        return download, upload, ping, jitter, server_info
+
+    except speedtest.ConfigRetrievalError as e:
+        logging.error("Config retrieval error: %s", e)
+        return jsonify(error=str(e)), 500  # Return error message and status code
+    except Exception as e:
+        logging.error("An unexpected error occurred: %s", e)
+        return jsonify(error="An error occurred while running the speed test."), 500
 
 # Homepage for the speedtest blueprint
 @speedtest_app.route('/')
