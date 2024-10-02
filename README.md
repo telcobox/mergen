@@ -1,6 +1,6 @@
 ### Mergen - Telco Toolbox
 
-Mergen is a digital toolbox for network, system and cloud engineering. It works on cloud-based environments, web application platforms or PaaS. 
+[Mergen](https://mergentoolbox.vercel.app) is a digital toolbox for network, system and cloud engineering. It works on any cloud-based environments and web application platforms. 
 
 You may use these web apps on any device responsively. 
 
@@ -12,4 +12,5 @@ What's included:
 5. Bandwidth Speed Test
 6. RAID Calculator
 
-Built with Python, Flask and Bootstrap - <em>with the help of Amazon Q and ChatGPT.</em>
+This is an open-source project. Please consider contributing. 
+Built with Python, Flask and Bootstrap - <em>with the help of Amazon Q and AI.</em>
